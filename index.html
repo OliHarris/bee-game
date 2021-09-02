@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="css/foundation-base.css?v=1.0" />
+    
+	<script type="text/javascript" src="scripts/modernizr.js"></script>    	
+    <script type="text/javascript" src="scripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>    	
+	<script type="text/javascript" src="scripts/initialise.js?v=1.0"></script>
+
+    <!--Page specific--> 
+    	<link rel="stylesheet" type="text/css" href="css/bee-game.css?v=1.0" />         
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+
+	<title>The Bee Game</title>
+</head>
+
+<body>
+	<header>
+    </header>
+    
+    <main>
+        <div id="background" class="cf">
+        	<div class="floating">
+                <div class="left">
+                    <figure class="bee-character"><img class="svg" src="images/queen-bee.svg" alt="Queen Bee image" /></figure>
+                    <figure class="bee-character"><img class="svg" src="images/worker-bee.svg" alt="Worker Bee image" /></figure>
+                    <figure class="bee-character"><img class="svg" src="images/drone-bee.svg" alt="Drone Bee image" /></figure>
+                </div>
+                <div class="right">
+                    <figure class="bee-character"><img class="svg" src="images/queen-bee.svg" alt="Queen Bee image" /></figure>
+                    <figure class="bee-character"><img class="svg" src="images/worker-bee.svg" alt="Worker Bee image" /></figure>
+                    <figure class="bee-character"><img class="svg" src="images/drone-bee.svg" alt="Drone Bee image" /></figure>
+                </div>
+            </div>
+            <div id="grass"></div>
+            <ul class="no-disc top">
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+            </ul>
+            <ul class="no-disc bottom">
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+            </ul>
+            <ul class="no-disc left">
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+            </ul>
+            <ul class="no-disc right">
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+                <li><figure class="hexagon"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure><figure class="hexagon hue-wipe"><img class="svg" src="images/icons/svg/hexagon.svg" alt="Hexagon image" /></figure></li>
+            </ul>
+        </div>
+    	<section id="home-screen" class="page">
+        	<div class="row">
+            	<div class="small-12 columns">
+					<div class="panel-container">
+                        <div class="panel center">
+                            <div class="content">
+                                <h1>Welcome to <span>The Bee Game</span></h1>
+                                <p>Click the 'Hit a Bee!' button repeatedly.</p>
+                                <p>Get lucky and hit the Queen enough times to take out the whole Hive at once!</p>
+                                <p>The object is to defeat the Hive in the least amount of hits. Score below 90 hits for a different end rank!</p>
+                                <button class="rounded">Start game</button>
+                            </div>
+                            <div class="background"></div>
+                        </div>
+                	</div>
+                </div>
+            </div>  
+		</section>
+    	<section id="game-screen" class="page hide">
+        	<div class="row">
+            	<div class="small-12 columns">
+                    <div class="panel center">
+                        <div class="content">
+                			<h1>The Bee Game</h1>
+                        </div>
+                        <div class="background"></div>
+                    </div>
+                    <section id="gameplay">
+						<div class="panel center">
+                        	<div class="content">
+								<div id="mobile-display">
+                                    <div class="hit-bee" class="center">
+                                        <div class="hit-counter">Hit count: <span>0</span></div>
+                                        <button>Hit a Bee!</button>
+                                    </div>
+                                    <div class="restart center hide">
+                                        <p class="winning-message"></p>
+                                        <button class="rounded">Restart game?</button>
+                                    </div>
+                                    <div class="border"></div>
+                            	</div>
+                                <div class="center">
+	                               	<div class="impact-container">
+                                        <div class="impact"></div>
+                                        <figure id="queen-bee" class="bee-instance">
+                							<div class="shine-container"><span></span><span></span><span></span></div>
+                                            <img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                            <span>Queen Bee</span>
+                                            <div class="counter"><span>100</span><span>/100</span></div>
+                                        </figure>
+                                	</div>
+                                </div>
+                                <div class="border"></div>
+                                <ul class="inline-list">
+                                    <li class="worker-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Worker Bee</span>
+                                        <div class="counter"><span>75</span><span>/75</span></div>
+                                    </li>
+                                    <li class="worker-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Worker Bee</span>
+                                        <div class="counter"><span>75</span><span>/75</span></div>
+                                    </li>
+                                    <li class="worker-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Worker Bee</span>
+                                        <div class="counter"><span>75</span><span>/75</span></div>
+                                    </li>
+                                    <li class="worker-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Worker Bee</span>
+                                        <div class="counter"><span>75</span><span>/75</span></div>
+                                    </li>
+                                    <li class="worker-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Worker Bee</span>
+                                        <div class="counter"><span>75</span><span>/75</span></div>
+                                    </li>
+                                </ul>
+                                <div class="border"></div>
+                                <ul class="inline-list">
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                    <li class="drone-bee bee-instance">
+                						<img class="svg" src="images/icons/svg/hexagon-single.svg" alt="Hexagon single image" />
+                                        <span>Drone Bee</span>
+                                        <div class="counter"><span>50</span><span>/50</span></div>
+                                    </li>
+                                </ul>
+                                <div id="tablet-display">
+                                    <div class="border"></div>
+                                    <div class="hit-bee" class="center">
+                                        <div class="hit-counter">Hit count: <span>0</span></div>
+                                        <button>Hit a Bee!</button>
+                                    </div>
+                                    <div class="restart center hide">
+                                        <p class="winning-message"></p>
+                                        <button class="rounded">Restart game?</button>
+                                    </div>
+                            	</div>
+                        	</div>
+	                        <div class="background"></div>
+                    	</div>
+                	</section>
+                </div>
+            </div>  
+		</section>
+	</main>  
+   
+    <footer>
+    </footer>
+    
+    <script type="text/javascript">
+		$(document).ready(function(){ 
+			initialise();
+		});
+	</script>
+</body>
+</html>
