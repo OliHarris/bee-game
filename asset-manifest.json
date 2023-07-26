@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/bee-game/static/css/main.2915d663.css",
+    "main.js": "/bee-game/static/js/main.7208f9af.js",
+    "static/js/787.55ab9c2e.chunk.js": "/bee-game/static/js/787.55ab9c2e.chunk.js",
+    "static/media/BerlingskeSerifTx-Rg.ttf": "/bee-game/static/media/BerlingskeSerifTx-Rg.02e4787776ba374f1676.ttf",
+    "static/media/BerlingskeSerifTx-Rg.eot": "/bee-game/static/media/BerlingskeSerifTx-Rg.0efe7509336db3b0813f.eot",
+    "static/media/BerlingskeSerifTx-Rg.svg": "/bee-game/static/media/BerlingskeSerifTx-Rg.51c428398f830332ab42.svg",
+    "static/media/BerlingskeSerifTx-Rg.woff": "/bee-game/static/media/BerlingskeSerifTx-Rg.4903d474d81a8539072e.woff",
+    "static/media/you_win.mp3": "/bee-game/static/media/you_win.db3b3fcca9c77d1fcfe0.mp3",
+    "static/media/reload.mp3": "/bee-game/static/media/reload.30f708a43603697eab34.mp3",
+    "static/media/dead_bee.mp3": "/bee-game/static/media/dead_bee.2c9b494a5676fa6a9eeb.mp3",
+    "static/media/hit_queen.mp3": "/bee-game/static/media/hit_queen.b783aaa1c26b926f233c.mp3",
+    "static/media/queen-bee.svg": "/bee-game/static/media/queen-bee.b6b42c1ec95695cec4231eb159bfa5c7.svg",
+    "static/media/drone-bee.svg": "/bee-game/static/media/drone-bee.46b15853ed437d6e84b68bc524074618.svg",
+    "static/media/worker-bee.svg": "/bee-game/static/media/worker-bee.6fb60286e262fc74babf9eea42fd8b92.svg",
+    "static/media/swat.mp3": "/bee-game/static/media/swat.10f4ec27b7ddb91560b0.mp3",
+    "static/media/hexagon.svg": "/bee-game/static/media/hexagon.66624f5970b653f1d328b5778b7e7ceb.svg",
+    "index.html": "/bee-game/index.html",
+    "static/media/hexagon-single.svg": "/bee-game/static/media/hexagon-single.d690bf94a63b9fab53a9777ea4159b8e.svg",
+    "static/media/right-thin-chevron.svg": "/bee-game/static/media/right-thin-chevron.df446bba82559717d8f2.svg",
+    "main.2915d663.css.map": "/bee-game/static/css/main.2915d663.css.map",
+    "main.7208f9af.js.map": "/bee-game/static/js/main.7208f9af.js.map",
+    "787.55ab9c2e.chunk.js.map": "/bee-game/static/js/787.55ab9c2e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2915d663.css",
+    "static/js/main.7208f9af.js"
+  ]
+}
