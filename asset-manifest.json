@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bee-game/static/css/main.2915d663.css",
-    "main.js": "/bee-game/static/js/main.7208f9af.js",
+    "main.css": "/bee-game/static/css/main.c7a2ccff.css",
+    "main.js": "/bee-game/static/js/main.ce2cf705.js",
     "static/js/787.55ab9c2e.chunk.js": "/bee-game/static/js/787.55ab9c2e.chunk.js",
     "static/media/BerlingskeSerifTx-Rg.ttf": "/bee-game/static/media/BerlingskeSerifTx-Rg.02e4787776ba374f1676.ttf",
     "static/media/BerlingskeSerifTx-Rg.eot": "/bee-game/static/media/BerlingskeSerifTx-Rg.0efe7509336db3b0813f.eot",
@@ -19,12 +19,12 @@
     "index.html": "/bee-game/index.html",
     "static/media/hexagon-single.svg": "/bee-game/static/media/hexagon-single.d690bf94a63b9fab53a9777ea4159b8e.svg",
     "static/media/right-thin-chevron.svg": "/bee-game/static/media/right-thin-chevron.df446bba82559717d8f2.svg",
-    "main.2915d663.css.map": "/bee-game/static/css/main.2915d663.css.map",
-    "main.7208f9af.js.map": "/bee-game/static/js/main.7208f9af.js.map",
+    "main.c7a2ccff.css.map": "/bee-game/static/css/main.c7a2ccff.css.map",
+    "main.ce2cf705.js.map": "/bee-game/static/js/main.ce2cf705.js.map",
     "787.55ab9c2e.chunk.js.map": "/bee-game/static/js/787.55ab9c2e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2915d663.css",
-    "static/js/main.7208f9af.js"
+    "static/css/main.c7a2ccff.css",
+    "static/js/main.ce2cf705.js"
   ]
 }
