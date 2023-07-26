@@ -219,7 +219,7 @@ export function App() {
 
     // remove animation classes, fade in tiles
     document.querySelectorAll(".tile-instance").forEach((item: Element) => {
-      item.classList.remove("disabled");
+      item.classList.remove("activated", "disabled");
     });
 
     // play sound-effect
