@@ -1,0 +1,466 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import "./fonts/fonts";
+
+/* -----------------------------------------------
+:: #background
+-------------------------------------------------- */
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#background .floating {
+  position: relative;
+  z-index: 2;
+  -webkit-animation: floating 3s ease-in-out infinite;
+  -moz-animation: floating 3s ease-in-out infinite;
+  -o-animation: floating 3s ease-in-out infinite;
+  animation: floating 3s ease-in-out infinite;
+}
+
+#background #grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: #8fcc8f; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(
+    #476647,
+    #8fcc8f
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#476647, #8fcc8f); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    #476647,
+    #8fcc8f
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#476647, #8fcc8f); /* Standard syntax */
+}
+
+#background ul {
+  position: absolute;
+  transform: rotate(90deg);
+  width: 100%;
+}
+
+#background ul.left,
+#background ul.right {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+#background ul.left {
+  left: 0;
+}
+
+#background ul.right {
+  right: 0;
+}
+
+#background ul.top {
+  top: 50%;
+}
+
+#background ul.bottom,
+#background ul.left,
+#background ul.right {
+  display: none;
+}
+
+#background ul.bottom {
+  top: -15%;
+  transform: rotate(270deg);
+}
+
+#background li {
+  position: relative;
+}
+
+#background .hexagon.hue-wipe {
+  position: absolute;
+  top: 0;
+}
+
+/* -----------------------------------------------
+:: .panel
+-------------------------------------------------- */
+.panel {
+  position: relative;
+  margin: 1em;
+  border: 0.5em solid #fac031;
+}
+
+.panel .content {
+  position: relative;
+  padding: 1em;
+  z-index: 1;
+}
+
+.panel .content h1 span {
+  display: block;
+}
+
+.panel .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0.8;
+}
+
+/* -----------------------------------------------
+:: #gameplay
+-------------------------------------------------- */
+#gameplay .panel .content {
+  padding: 1.5em 1em;
+}
+
+/* remove responsive inline-list whitespace */
+#gameplay .inline-list {
+  font-size: 0;
+}
+
+#gameplay .border {
+  margin: 0.5em 0;
+  border: 1px solid #eaa806;
+}
+
+#gameplay .impact-container {
+  position: relative;
+  display: inline-block;
+}
+
+#gameplay .impact {
+  position: absolute;
+  top: -0.5em;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  /* radial effect from http://codepen.io/thebabydino/pen/LGGawN/ */
+  background: radial-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 10%,
+    #ffff00 0%,
+    #ffff00 20%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    #ffff00 0%,
+    #ffff00 40%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    #ffff00 0%,
+    #ffff00 60%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+}
+
+#gameplay .impact.animate {
+  top: -7.25em;
+  left: -112.5%;
+  width: 325%;
+  height: 250%;
+  opacity: 1;
+}
+
+#gameplay .tile-instance,
+#gameplay .inline-list,
+#gameplay .hit-bee button {
+  width: 110px;
+}
+
+#gameplay .tile-instance {
+  position: relative;
+  padding: 0.75em;
+  margin: 0.5em 0;
+  font-size: 0.9375rem;
+  font-size: 15px;
+  vertical-align: bottom;
+  background-color: #ffff00;
+  border: 2px solid #b3b300;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* shine effect from http://jsfiddle.net/antontrollback/nqqc7/ */
+#gameplay .tile-instance:after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -200%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transform: rotate(30deg);
+}
+
+#gameplay .tile-instance.shine:after {
+  top: -50%;
+  left: -20%;
+  opacity: 1;
+  transition-property: left, top, opacity;
+  transition-duration: 1s, 1s, 0.15s;
+  transition-timing-function: ease;
+}
+
+#gameplay .tile-instance .counter {
+  display: none;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+#gameplay .tile-instance.wobble {
+  color: #fff;
+  background-color: #316bfa;
+  border: 2px solid #0542d9;
+  -webkit-animation: wobble 1s ease;
+  -moz-animation: wobble 1s ease;
+  -o-animation: wobble 1s ease;
+  animation: wobble 1s ease;
+}
+
+#gameplay .tile-instance.activated {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+#gameplay .tile-instance.activated .counter {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+#gameplay .tile-instance.disabled {
+  color: #fff;
+  border: 2px solid #b30000;
+  background-color: #ff0000;
+}
+
+#gameplay .tile-instance.disabled > .counter > span:last-of-type {
+  display: none;
+}
+
+#gameplay .tile-instance > span {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+#gameplay #queen-bee {
+  display: inline-block;
+}
+
+#gameplay .hit-bee button {
+  height: 54px;
+  margin-bottom: 0.5em;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #eaa806;
+}
+
+#gameplay .restart .winning-message {
+  display: inline-block;
+  padding: 0 1em;
+  margin-bottom: 1em;
+  font-size: 20px;
+  font-size: 1.25rem;
+  color: #eaa806;
+  border: 2px solid #eaa806;
+}
+
+#gameplay .restart button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+/* -----------------------------------------------
+:: Media specific
+-------------------------------------------------- */
+@media only screen and (min-width: 22.5em) {
+  /*
+	min-width:360px - Samsung Galaxy Nexus portrait - small-grid;
+	*/
+}
+
+@media only screen and (min-width: 23.4375em) {
+  /*
+	min-width:375px - iPhone6 portrait - small-grid;
+	*/
+  #gameplay .inline-list {
+    width: 220px;
+  }
+  #gameplay .inline-list .worker-bee:nth-of-type(5) {
+    float: none;
+  }
+}
+
+@media only screen and (min-width: 25.875em) {
+  /*
+	min-width:414px -  iPhone6 Plus portrait - small-grid;
+	*/
+}
+
+@media only screen and (min-width: 30em) {
+  /*
+	min-width:480px - iPhone landscape - medium-grid;
+	*/
+  #gameplay .inline-list {
+    width: 330px;
+  }
+  #gameplay .inline-list .worker-bee:nth-of-type(4),
+  #gameplay .inline-list .drone-bee:nth-of-type(7),
+  #gameplay .inline-list .drone-bee:nth-of-type(8) {
+    float: none;
+  }
+}
+
+@media only screen and (min-width: 35.5em) {
+  /*
+	min-width:568px -  iPhone5 landscape - medium-grid;
+	*/
+}
+
+@media only screen and (min-width: 37.5em) {
+  /*
+	min-width:600px - Samsung Galaxy Nexus landscape - medium-grid;
+	*/
+}
+
+@media only screen and (min-width: 40em) {
+  /*
+	min-width:640px - all later Samsung Galaxy/Nexus landscape - medium-grid;
+	*/
+}
+
+@media only screen and (min-width: 41.6875em) {
+  /*
+	min-width:667px - iPhone6 landscape - medium-grid;
+	*/
+}
+
+@media only screen and (min-width: 46em) {
+  /*
+	min-width:736px - iPhone6 Plus landscape - medium-grid;
+	*/
+  #gameplay .inline-list {
+    width: 550px;
+  }
+  #gameplay .inline-list .worker-bee:nth-of-type(4),
+  #gameplay .inline-list .worker-bee:nth-of-type(5) {
+    float: left;
+  }
+  #gameplay .inline-list .drone-bee:nth-of-type(6) {
+    float: none;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  /*
+	min-width:768px - iPad portrait - large-grid;
+	*/
+  #background ul.top {
+    top: 10%;
+  }
+  #background ul.bottom {
+    display: block;
+  }
+  #home-screen > .row > .columns {
+    display: table;
+    min-height: 750px;
+  } /* works in tandem with the 'main > *' rule */
+  #home-screen .panel-container {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  #home-screen .panel {
+    width: 50%;
+    margin: 0 auto;
+  }
+  #gameplay .hit-counter {
+    margin-top: 1em;
+  }
+  #gameplay .restart button {
+    margin-bottom: 0.5em;
+  }
+}
+
+@media screen and (min-width: 50em) {
+  /*
+	min-width:800px - Nexus7 portrait - large-grid;
+	*/
+}
+
+@media screen and (min-width: 64em) {
+  /*
+	min-width:1024px - iPad landscape - xlarge-grid;
+	*/
+  #background ul.left,
+  #background ul.right {
+    top: 75%;
+    display: block;
+  }
+  #background ul.left {
+    left: 50%;
+  }
+  #background ul.right {
+    right: 50%;
+  }
+  #home-screen > .row > .columns {
+    min-height: 720px;
+  } /* works in tandem with the 'main > *' rule */
+  #gameplay .inline-list {
+    display: table;
+    width: auto;
+  }
+  #gameplay .inline-list .drone-bee:nth-of-type(6),
+  #gameplay .inline-list .drone-bee:nth-of-type(7),
+  #gameplay .inline-list .drone-bee:nth-of-type(8) {
+    float: left;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  /*
+	min-width:1280px - Nexus7 landscape - large-grid;
+	*/
+}
