@@ -1,78 +1,73 @@
-import React, { useState, useRef, useEffect, MouseEvent } from "react";
-// @ts-ignore
+import { useState, useRef, MutableRefObject, useEffect } from "react";
 import SVGInject from "@iconfu/svg-inject";
-import "./styles/foundation-base.css";
-import "./App.css";
 
-import queenBeeImage from "./images/queen-bee.svg";
-import workerBeeImage from "./images/worker-bee.svg";
-import droneBeeImage from "./images/drone-bee.svg";
-import bgHexagonImages from "./images/icons/svg/hexagon.svg";
-import tileHexagonImage from "./images/icons/svg/hexagon-single.svg";
+import queenBeeImage from "./assets/images/queen-bee.svg";
+import workerBeeImage from "./assets/images/worker-bee.svg";
+import droneBeeImage from "./assets/images/drone-bee.svg";
+import bgHexagonImages from "./assets/images/icons/svg/hexagon.svg";
+import tileHexagonImage from "./assets/images/icons/svg/hexagon-single.svg";
 
-import reloadSfx from "./sound/reload.mp3";
-import swatSfx from "./sound/swat.mp3";
-import deadBeeSfx from "./sound/dead_bee.mp3";
-import hitQueenSfx from "./sound/hit_queen.mp3";
-import youWinSfx from "./sound/you_win.mp3";
+import reloadSfx from "./assets/sound/reload.mp3";
+import swatSfx from "./assets/sound/swat.mp3";
+import deadBeeSfx from "./assets/sound/dead_bee.mp3";
+import hitQueenSfx from "./assets/sound/hit_queen.mp3";
+import youWinSfx from "./assets/sound/you_win.mp3";
 
-export function App() {
-  const [isMobile, setIsMobile] = useState(true);
-  const [hitCounter, setHitCounter] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
+const BackgroundCharacters = () => {
+  return (
+    <>
+      <figure className="bee-character">
+        <img src={queenBeeImage} alt="Queen Bee" />
+      </figure>
+      <figure className="bee-character">
+        <img src={workerBeeImage} alt="Worker Bee" />
+      </figure>
+      <figure className="bee-character">
+        <img src={droneBeeImage} alt="Drone Bee" />
+      </figure>
+    </>
+  );
+};
 
-  const tileArray: string[] = [
-    "queen",
-    "worker",
-    "worker",
-    "worker",
-    "worker",
-    "worker",
-    "drone",
-    "drone",
-    "drone",
-    "drone",
-    "drone",
-    "drone",
-    "drone",
-    "drone",
-  ];
+const BackgroundHexagon = () => (
+  <img className="svg-inject" src={bgHexagonImages} alt="Hexagon" />
+);
 
-  const queenBeeImpactRef = useRef<HTMLElement>();
+const BackgroundHexagonComposite = () => {
+  return (
+    <li>
+      <figure className="hexagon">
+        <BackgroundHexagon />
+      </figure>
+      <figure className="hexagon hue-wipe">
+        <BackgroundHexagon />
+      </figure>
+    </li>
+  );
+};
 
-  useEffect(() => {
-    // reference important static elements
-    queenBeeImpactRef.current = document.querySelector(
-      ".impact"
-    ) as HTMLElement;
+interface BackgroundHexagonCompositeListInterface {
+  orientation: string;
+}
+const BackgroundHexagonCompositeList = ({
+  orientation,
+}: BackgroundHexagonCompositeListInterface) => {
+  return (
+    <ul className={`no-disc ${orientation}`}>
+      <BackgroundHexagonComposite />
+      <BackgroundHexagonComposite />
+      <BackgroundHexagonComposite />
+      <BackgroundHexagonComposite />
+      <BackgroundHexagonComposite />
+    </ul>
+  );
+};
 
-    // screen size switch
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-  }, []);
-
-  const pauseAudio = (clip: string) => {
-    const audioPause = new Audio(clip);
-    // pause then reset
-    audioPause.pause();
-    audioPause.currentTime = 0;
-  };
-
-  const playAudio = (clip: string) => {
-    const audioPlay = new Audio(clip);
-    // reset then play
-    audioPlay.currentTime = 0;
-    audioPlay.play();
-  };
-
-  const handleStartGame = (event: MouseEvent<HTMLButtonElement>) => {
+interface HomeScreenInterface {
+  playAudio: (clip: string) => void;
+}
+const HomeScreen = ({ playAudio }: HomeScreenInterface) => {
+  const handleStartGame = () => {
     const homeScreen = document.querySelector("#home-screen") as HTMLElement;
     homeScreen.classList.add("hide");
     const gameScreen = document.querySelector("#game-screen") as HTMLElement;
@@ -89,6 +84,56 @@ export function App() {
     });
   };
 
+  return (
+    <section id="home-screen" className="page">
+      <div className="row">
+        <div className="small-12 columns">
+          <div className="panel-container">
+            <div className="panel center">
+              <div className="content">
+                <h1>
+                  Welcome to <span>The Bee Game</span>
+                </h1>
+                <p>Click the &apos;Hit a Bee!&apos; button repeatedly.</p>
+                <p>
+                  Get lucky and hit the Queen enough times to take out the whole
+                  Hive at once!
+                </p>
+                <p>
+                  The object is to defeat the Hive in the least amount of hits.
+                  Score below 90 hits for a different end rank!
+                </p>
+                <button className="rounded" onClick={() => handleStartGame()}>
+                  Start game
+                </button>
+              </div>
+              <div className="background"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+interface UserInputFragmentInterface {
+  setHitCounter: (value: number) => void;
+  pauseAudio: (clip: string) => void;
+  playAudio: (clip: string) => void;
+  queenBeeImpactRef: MutableRefObject<HTMLElement | null>;
+  setGameOver: (value: boolean) => void;
+  hitCounter: number;
+  gameOver: boolean;
+}
+const UserInputFragment = ({
+  setHitCounter,
+  pauseAudio,
+  playAudio,
+  queenBeeImpactRef,
+  setGameOver,
+  hitCounter,
+  gameOver,
+}: UserInputFragmentInterface) => {
   const handleHitBeeClick = () => {
     // update hitCount
     setHitCounter(hitCounter + 1);
@@ -188,7 +233,7 @@ export function App() {
     }
   };
 
-  const handleRestartGame = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleRestartGame = () => {
     // update game state
     setGameOver(false);
     // update hitCount
@@ -226,82 +271,140 @@ export function App() {
     playAudio(reloadSfx);
   };
 
-  const BackgroundCharacters = () => {
-    return (
-      <>
-        <figure className="bee-character">
-          <img src={queenBeeImage} alt="Queen Bee" />
-        </figure>
-        <figure className="bee-character">
-          <img src={workerBeeImage} alt="Worker Bee" />
-        </figure>
-        <figure className="bee-character">
-          <img src={droneBeeImage} alt="Drone Bee" />
-        </figure>
-      </>
-    );
-  };
-
-  const BackgroundHexagonCompositeList = ({ orientation }: any) => {
-    const BackgroundHexagonComposite = () => {
-      const BackgroundHexagon = () => {
-        useEffect(() => {
-          SVGInject(document.querySelectorAll("img.svg-inject"));
-        }, []);
-
-        return (
-          <img className="svg-inject" src={bgHexagonImages} alt="Hexagon" />
-        );
-      };
-
-      return (
-        <li>
-          <figure className="hexagon">
-            <BackgroundHexagon />
-          </figure>
-          <figure className="hexagon hue-wipe">
-            <BackgroundHexagon />
-          </figure>
-        </li>
-      );
-    };
-
-    return (
-      <ul className={`no-disc ${orientation}`}>
-        <BackgroundHexagonComposite />
-        <BackgroundHexagonComposite />
-        <BackgroundHexagonComposite />
-        <BackgroundHexagonComposite />
-        <BackgroundHexagonComposite />
-      </ul>
-    );
-  };
-
-  const UserInputFragment = () => {
-    return (
-      <>
-        <div className="hit-bee">
-          <div className="hit-counter">
-            Hit count: <span>{hitCounter}</span>
-          </div>
-          {!gameOver && (
-            <button onClick={(e) => handleHitBeeClick()}>Hit a Bee!</button>
-          )}
+  return (
+    <>
+      <div className="hit-bee">
+        <div className="hit-counter">
+          Hit count: <span>{hitCounter}</span>
         </div>
-        {gameOver && (
-          <div className="restart center">
-            <p className="winning-message">
-              {hitCounter < 90 && "RANK: SWAT-KING"}
-              {hitCounter >= 90 && "RANK: AMATEUR BEE CLEANER"}
-            </p>
-            <button className="rounded" onClick={(e) => handleRestartGame(e)}>
-              Restart game?
-            </button>
-          </div>
+        {!gameOver && (
+          <button onClick={() => handleHitBeeClick()}>Hit a Bee!</button>
         )}
-      </>
-    );
+      </div>
+      {gameOver && (
+        <div className="restart center">
+          <p className="winning-message">
+            {hitCounter < 90 && "RANK: SWAT-KING"}
+            {hitCounter >= 90 && "RANK: AMATEUR BEE CLEANER"}
+          </p>
+          <button className="rounded" onClick={() => handleRestartGame()}>
+            Restart game?
+          </button>
+        </div>
+      )}
+    </>
+  );
+};
+
+interface BeeTileInterface {
+  details: {
+    id: string;
+    title: string;
+    life: string;
   };
+}
+const BeeTile = ({ details }: BeeTileInterface) => {
+  return (
+    <>
+      <img className="svg-inject" src={tileHexagonImage} alt="Hexagon single" />
+      <span>{details.title} Bee</span>
+      <div className="counter">
+        <span>{details.life}</span>
+        <span>/{details.life}</span>
+      </div>
+    </>
+  );
+};
+
+const BeeTileList = ({ details }: BeeTileInterface) => {
+  const tileArray: string[] = [
+    "queen",
+    "worker",
+    "worker",
+    "worker",
+    "worker",
+    "worker",
+    "drone",
+    "drone",
+    "drone",
+    "drone",
+    "drone",
+    "drone",
+    "drone",
+    "drone",
+  ];
+
+  return (
+    <ul className="inline-list">
+      {tileArray.map((item, index) =>
+        item === details.id ? (
+          <li key={index} className={`${details.id}-bee tile-instance`}>
+            <BeeTile details={details} />
+          </li>
+        ) : null
+      )}
+    </ul>
+  );
+};
+
+const App = () => {
+  const [isMobile, setIsMobile] = useState<boolean>(true);
+  const [hitCounter, setHitCounter] = useState<number>(0);
+  const [gameOver, setGameOver] = useState<boolean>(false);
+
+  const queenBeeImpactRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // reference important static elements
+    queenBeeImpactRef.current = document.querySelector(
+      ".impact"
+    ) as HTMLElement;
+
+    // screen size switch
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    SVGInject(document.querySelectorAll("img.svg-inject"));
+  }, []);
+
+  const pauseAudio = (clip: string) => {
+    const audioPause = new Audio(clip);
+    // pause then reset
+    audioPause.pause();
+    audioPause.currentTime = 0;
+  };
+
+  const playAudio = (clip: string) => {
+    const audioPlay = new Audio(clip);
+    // reset then play
+    audioPlay.currentTime = 0;
+    audioPlay.play();
+  };
+
+  const beeDetails = [
+    {
+      id: "queen",
+      title: "Queen",
+      life: "100",
+    },
+    {
+      id: "worker",
+      title: "Worker",
+      life: "75",
+    },
+    {
+      id: "drone",
+      title: "Drone",
+      life: "50",
+    },
+  ];
 
   return (
     <main>
@@ -320,37 +423,7 @@ export function App() {
         <BackgroundHexagonCompositeList orientation="left" />
         <BackgroundHexagonCompositeList orientation="right" />
       </div>
-      <section id="home-screen" className="page">
-        <div className="row">
-          <div className="small-12 columns">
-            <div className="panel-container">
-              <div className="panel center">
-                <div className="content">
-                  <h1>
-                    Welcome to <span>The Bee Game</span>
-                  </h1>
-                  <p>Click the &apos;Hit a Bee!&apos; button repeatedly.</p>
-                  <p>
-                    Get lucky and hit the Queen enough times to take out the
-                    whole Hive at once!
-                  </p>
-                  <p>
-                    The object is to defeat the Hive in the least amount of
-                    hits. Score below 90 hits for a different end rank!
-                  </p>
-                  <button
-                    className="rounded"
-                    onClick={(e) => handleStartGame(e)}
-                  >
-                    Start game
-                  </button>
-                </div>
-                <div className="background"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeScreen playAudio={playAudio} />
       <section id="game-screen" className="page hide">
         <div className="row">
           <div className="small-12 columns">
@@ -363,66 +436,43 @@ export function App() {
             <div id="gameplay">
               <div className="panel center">
                 <div className="content">
-                  {isMobile && <UserInputFragment />}
+                  {isMobile && (
+                    <UserInputFragment
+                      setHitCounter={setHitCounter}
+                      pauseAudio={pauseAudio}
+                      playAudio={playAudio}
+                      queenBeeImpactRef={queenBeeImpactRef}
+                      setGameOver={setGameOver}
+                      hitCounter={hitCounter}
+                      gameOver={gameOver}
+                    />
+                  )}
                   <div className="border"></div>
                   {/* QueenBeeTile */}
                   <div className="impact-container">
                     <div className="impact"></div>
                     <figure id="queen-bee" className="tile-instance">
-                      <img
-                        className="svg-inject"
-                        src={tileHexagonImage}
-                        alt="Hexagon single"
-                      />
-                      <span>Queen Bee</span>
-                      <div className="counter">
-                        <span>100</span>
-                        <span>/100</span>
-                      </div>
+                      <BeeTile details={beeDetails[0]} />
                     </figure>
                   </div>
                   <div className="border"></div>
-                  <ul className="inline-list">
-                    {tileArray.map((item, index) =>
-                      // WorkerBeeTile
-                      item === "worker" ? (
-                        <li key={index} className="worker-bee tile-instance">
-                          <img
-                            className="svg-inject"
-                            src={tileHexagonImage}
-                            alt="Hexagon single"
-                          />
-                          <span>Worker Bee</span>
-                          <div className="counter">
-                            <span>75</span>
-                            <span>/75</span>
-                          </div>
-                        </li>
-                      ) : null
-                    )}
-                  </ul>
+                  {/* WorkerBeeTile */}
+                  <BeeTileList details={beeDetails[1]} />
                   <div className="border"></div>
-                  <ul className="inline-list">
-                    {tileArray.map((item, index) =>
-                      // DroneBeeTile
-                      item === "drone" ? (
-                        <li key={index} className="drone-bee tile-instance">
-                          <img
-                            className="svg-inject"
-                            src={tileHexagonImage}
-                            alt="Hexagon single"
-                          />
-                          <span>Drone Bee</span>
-                          <div className="counter">
-                            <span>50</span>
-                            <span>/50</span>
-                          </div>
-                        </li>
-                      ) : null
-                    )}
-                  </ul>
+                  {/* DroneBeeTile */}
+                  <BeeTileList details={beeDetails[2]} />
                   <div className="border"></div>
-                  {!isMobile && <UserInputFragment />}
+                  {!isMobile && (
+                    <UserInputFragment
+                      setHitCounter={setHitCounter}
+                      pauseAudio={pauseAudio}
+                      playAudio={playAudio}
+                      queenBeeImpactRef={queenBeeImpactRef}
+                      setGameOver={setGameOver}
+                      hitCounter={hitCounter}
+                      gameOver={gameOver}
+                    />
+                  )}
                 </div>
                 <div className="background"></div>
               </div>
@@ -432,6 +482,6 @@ export function App() {
       </section>
     </main>
   );
-}
+};
 
 export default App;
