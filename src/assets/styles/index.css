@@ -639,7 +639,7 @@ button.rounded {
 }
 
 button.rounded:after {
-  content: url("assets/images/icons/svg/right-thin-chevron.svg");
+  content: url("../../assets/images/icons/svg/right-thin-chevron.svg");
   position: absolute;
   right: 16px;
   width: 8px;
